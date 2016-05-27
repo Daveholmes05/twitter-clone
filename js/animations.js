@@ -4,10 +4,7 @@ $(document).ready(function() {
 	$('#char-count').hide();
 
 	$('.tweet-compose').focus(function() {
-		$('textarea').css({
-			'height': '5em'
-
-		})
+		$('textarea').css('height', '5em');
 
 		$('#char-count').show();
 
@@ -20,8 +17,22 @@ $(document).ready(function() {
 			length = maxLength - length;
 
 			$('#char-count').text(length);
-		})
-	})
+
+				if (length <= 10) {
+					$('#char-count').css('color', 'red');
+				}
+				else {
+					$('#char-count').css('color', 'black');
+				}
+
+				if (length <= 0) {
+					$('.button').prop('disabled', true);
+				}
+				else {
+					$('.button').prop('disabled', false);
+				}
+		});
+	});
 
 
 
